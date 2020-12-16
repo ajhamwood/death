@@ -1,0 +1,282 @@
+{
+  "pop": 25520000,
+  "stats": {
+    "while_using_substance": {
+      "total": 330,
+      "alcohol": 266,
+      "multiple_drug_use": 26,
+      "tobacco": 18,
+      "stimulants": 8,
+      "opioids": 8,
+      "cannibinoids": 1,
+      "sedatives": 1,
+      "cocaine": 1,
+      "solvents": 1
+    },
+    "physical_behavioural": {
+      "total": 18,
+      "eating_disorder": 17,
+      "postpartum": 1
+    },
+    "pedestrian": {
+      "total": 210,
+      "collision_with_car": 153,
+      "collision_with_heavy_vehicle": 21,
+      "collision_with_train": 13,
+      "collision_with_motorcycle": 6,
+      "collision_with_non-motor": 1
+    },
+    "cyclist": {
+      "total": 43,
+      "collision_with_car": 16,
+      "collision_with_stationary": 9,
+      "collision_with_heavy_vehicle": 7,
+      "non-collision": 6,
+      "collision_with_motorcycle": 2,
+      "collision_with_cyclist": 1
+    },
+    "motorcycle": {
+      "total": 243,
+      "collision_with_car": 87,
+      "collision_with_stationary": 84,
+      "non-collision": 29,
+      "collision_with_heavy_vehicle": 20,
+      "collision_with_motorcycle": 10,
+      "collision_with_pedestrian": 3,
+      "collision_with_non-motor": 1
+    },
+    "car": {
+      "total": 739,
+      "collision_with_stationary": 280,
+      "collision_with_car": 219,
+      "non-collision": 142,
+      "collision_with_heavy_vehicle": 80,
+      "collision_with_pedestrian": 5,
+      "collision_with_train": 1
+    },
+    "ute": {
+      "total": 14,
+      "collision_with_heavy_vehicle": 6,
+      "collision_with_stationary": 5,
+      "collision_with_motorcycle": 2,
+      "non-collision": 1
+    },
+    "heavy_vehicle": {
+      "total": 47,
+      "non-collision": 17,
+      "collision_with_stationary": 15,
+      "collision_with_heavy_vehicle": 9,
+      "collision_with_car": 3,
+      "collision_with_pedestrian": 1,
+      "collision_with_non-motor": 1
+    },
+    "bus": {
+      "total": 5,
+      "collision_with_heavy_vehicle": 2,
+      "non-collision": 2,
+      "collision_with_car": 1
+    },
+    "other_transport": {
+      "total": 98,
+      "atv": 18,
+      "agri": 17,
+      "animal": 10,
+      "construction": 10,
+      "train": 1,
+      "industrial": 1
+    },
+    "watercraft": {
+      "total": 49,
+      "accident_drowning": 21,
+      "non-accident_drowning": 15,
+      "accident_other_injury": 6,
+      "accident_on_board": 3
+    },
+    "aircraft": {
+      "total": 38,
+      "powered": 31,
+      "unpowered": 7
+    },
+    "falls": {
+      "total": 3298,
+      "same_level_trip": 425,
+      "on_stairs": 76,
+      "from_bed": 71,
+      "from_building": 45,
+      "from_chair": 34,
+      "other_same_level": 33,
+      "from_ladder": 31,
+      "from_level_to_level": 20,
+      "from_wheelchair": 19,
+      "cliff": 14,
+      "collide_push_person": 10,
+      "skates": 4,
+      "while_carried": 3,
+      "from_scaffolding": 2,
+      "from_tree": 2,
+      "at_playground": 1,
+      "into_water": 1
+    },
+    "inanimate": {
+      "total": 100,
+      "projectile": 29,
+      "crush": 23,
+      "other_machinery": 13,
+      "strike_other_object": 6,
+      "agri": 4,
+      "foreign_body": 4,
+      "other_lifting_device": 3,
+      "sharp_glass": 3,
+      "rifle_shotgun": 3,
+      "knife": 2,
+      "rupture_tyre": 2,
+      "other_explosion": 2,
+      "strike_sports_equip": 1,
+      "lawnmower": 1,
+      "handtool": 1,
+      "other_firearm": 1,
+      "rupture_gas_cylinder": 1
+    },
+    "animate": {
+      "total": 15,
+      "dog": 5,
+      "other_mammal": 4,
+      "struck_by_person": 3,
+      "striking_person": 2,
+      "crocodile": 1
+    },
+    "accidental_drowning": {
+      "total": 199,
+      "in_natural_water": 95,
+      "fall_into_natural_water": 40,
+      "in_swimming_pool": 19,
+      "fall_into_swimming_pool": 19,
+      "in_bath": 10,
+      "fall_into_bath": 1
+    },
+    "other_breathing_accident": {
+      "total": 192,
+      "choking_food_drink": 71,
+      "choking_other": 66,
+      "hanging_other": 13,
+      "suffocation_in_bed": 11,
+      "choking_vomit": 8,
+      "trapped": 2,
+      "cave-in": 1
+    },
+    "electricity_radiation": {
+      "total": 16,
+      "other_electricity": 9,
+      "electric_lines": 6,
+      "air_pressure": 1
+    },
+    "fire": {
+      "total": 66,
+      "uncontrolled_building": 39,
+      "uncontrolled_non-building": 8,
+      "flammable_material": 5,
+      "controlled_building": 4,
+      "clothing": 4,
+      "controlled_non-building": 1,
+      "nightwear": 1
+    },
+    "heat": {
+      "total": 8,
+      "food_drink": 3,
+      "tap_water": 2,
+      "heaters": 2
+    },
+    "nature": {
+      "total": 57,
+      "heat": 30,
+      "cold": 21,
+      "lightning": 1,
+      "volcano": 1,
+      "avalanche": 1,
+      "storm": 1,
+      "flood": 1
+    },
+    "accidental_poisoning": {
+      "total": 1357,
+      "unspecified_drugs": 762,
+      "narcotics_hallucinogens": 293,
+      "sleeping_pills": 175,
+      "alcohol": 99,
+      "analgesics": 11,
+      "gases": 10,
+      "autonomics": 3,
+      "solvents": 3
+    },
+    "overexertion_privation": {
+      "total": 3,
+      "overexertion": 3
+    },
+    "other_accident": {
+      "total": 955
+    },
+    "suicide": {
+      "total": 3317,
+      "hanging": 1964,
+      "drugs": 283,
+      "jumping_from_high_place": 154,
+      "rifle_shotgun": 149,
+      "gases": 137,
+      "sleeping_pills": 98,
+      "in_front_of_moving_object": 97,
+      "sharps": 94,
+      "car_crash": 62,
+      "drowning": 48,
+      "narcotics_hallucinogens": 32,
+      "fire": 27,
+      "handgun": 24,
+      "other_chemicals": 21,
+      "analgesics": 19,
+      "alcohol": 14,
+      "pesticides": 12,
+      "autonomics": 10,
+      "other_firearm": 7,
+      "solvents": 3
+    },
+    "assault": {
+      "total": 244,
+      "sharps": 97,
+      "bodily_force": 38,
+      "rifle_shotgun": 23,
+      "blunt_object": 16,
+      "handgun": 13,
+      "car": 10,
+      "hanging_strangulation": 7,
+      "fire": 5,
+      "other_firearm": 3,
+      "neglect": 2,
+      "drugs": 1,
+      "gases": 1,
+      "drowning": 1,
+      "pushing_from_high_place": 1
+    },
+    "undetermined_intent": {
+      "total": 280,
+      "drugs": 71,
+      "car_crash": 37,
+      "sleeping_pills": 27,
+      "narcotics_hallucinogens": 24,
+      "drowning": 13,
+      "hanging_strangulation": 12,
+      "from_high_place": 11,
+      "sharps": 10,
+      "in_front_of_moving_object": 10,
+      "other_firearm": 6,
+      "analgesics": 5,
+      "alcohol": 4,
+      "other_chemicals": 4,
+      "autonomics": 3,
+      "fire": 3,
+      "gases": 2,
+      "blunt_object": 2
+    },
+    "legal_war": {
+      "total": 15,
+      "legal_intervention": 15
+    }
+  }
+}
