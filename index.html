@@ -1,0 +1,166 @@
+<!doctype html>
+<html>
+<head>
+  <title>You'll never grow old</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta name='keywords' content='death, simulation, natural death, immortality'>
+  <meta name='description' content='If all non-external causes of death were eliminated, how long would you live for, and how would you die?'>
+  <link rel='icon' type='image/x-icon' href='data:image/x-icon;base64,'>
+  <style>
+body {
+  margin: 3vh 0;
+  background: #fff;
+  color: #111;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  height: 94vh
+}
+section { margin: 0 20vw }
+a { color: #888 }
+a:visited { color: #555 }
+#run {
+  grid-column: 1/3;
+  display: flex;
+  align-items: center;
+  padding: .5rem
+}
+#run > * { margin: .5rem }
+#simulation {
+  display: grid;
+  grid-template-columns: calc(60% - 1rem) 40%;
+  column-gap: 1rem
+}
+#survivors {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 2rem);
+}
+div.alive::before { content: '🙂' }
+div.dead::before { content: '💀' }
+#obits_wrapper {
+  display: grid;
+  grid-template-columns: 4rem auto;
+  grid-template-rows: 3rem auto;
+  text-align: center
+}
+#obits {
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns: 4rem auto;
+  grid-auto-rows: min-content;
+  overflow-y: auto;
+  height: 65vh;
+}
+#obits > .age {
+  text-align: right;
+  margin-right: .7rem
+}
+#obits > .cause { text-align: left }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #000;
+    color: #eee
+  }
+  a { color: #888 }
+  a:visited { color: #aaa }
+}
+  </style>
+</head>
+<body>
+  <section>
+    <h1>You'll never grow old</h1>
+    <p>Imagine you and 99 other people were suddenly immortal: no more old age, no more disease. However, all external factors can still kill you just as easily as they can now. How long could you expect to live for? And how would you expect to meet your demise?</p>
+    <p><small>Inspired by <a href='https://polstats.com/#!/life'>Polstats</a> and the comic/movie <a href='https://www.youtube.com/watch?v=aK-X2d0lJ_s'>The Old Guard</a>. Data compiled from the Australian Bureau of Statistics <a href='https://www.abs.gov.au/statistics/health/causes-death/causes-death-australia/2019#data-download'>Causes of Death 2019</a></small></p>
+  </section>
+  <section id='simulation'>
+    <div id='run'>
+      <button>Run</button>
+      <span>Years: <span id='year'>0</span></span>
+      <span>Survivors: <span id='surv'></span></span>
+    </div>
+    <div id='obits_wrapper'>
+      <h3>Age</h3><h3>Cause</h3>
+      <div id='obits'></div>
+    </div>
+    <div id='survivors'></div>
+  </section>
+  <template id='avatar'>
+    <div class='avatar alive'></div>
+  </template>
+  <template id='obit'>
+    <small class='age'></small>
+    <small class='cause'></small>
+  </template>
+  <script src='machine.js'></script>
+  <script>
+// Page state
+var app = new $.Machine({ data: null, pop: null, test: null, sampleSize: 100 });
+
+// Events
+$.targets({
+  load () {
+    for (let i = 0; i < app.state().sampleSize; i++) $.load('avatar', '#survivors');
+    $('#surv')[0].textContent = app.state().sampleSize;
+    fetch('deathdata.json')
+      .then(res => res.json())
+      .then(json => app.emit('init', json))
+  },
+  app: {
+    init (obj) {
+      this.pop = obj.pop;
+      let cuml = 0, data = [];
+      for (let [k, v] of Object.entries(obj.stats)) {
+        let { total } = v, inner = 0;
+        delete v.total;
+        for (let [k1, v1] of Object.entries(v)) {
+          inner += v1;
+          data.push([k + ': ' + k1, cuml + inner])
+        }
+        if (total !== inner) data.push([k + ': ' + 'other', cuml += total])
+      }
+      this.test = cuml;
+      this.data = data
+    },
+    run (n) {
+      $('button')[0].disabled = true;
+      $('#survivors > .dead').forEach(el => {
+        el.classList.remove('dead');
+        el.classList.add('alive')
+      });
+      while ($('#obits > *').length) $('#obits > :last-child')[0].remove()
+      let test = [], running = n, y = 0,
+          loop = () => {
+            for (let i = 0; i < running; i++) {
+              let v = this.pop * Math.random();
+              if (v <= this.test) {
+                let next = [y, this.data.find(x => v < x[1])[0]],
+                    avatar = $('#survivors > .alive')[Math.floor(running * Math.random())],
+                    obit = $.load('obit', '#obits')[0];
+                avatar.classList.remove('alive');
+                avatar.classList.add('dead');
+                next.forEach((v, i) => obit[i].textContent = v);
+                $('#obits')[0].scrollTo(0, 1e9);
+                test.push(next);
+                $('#surv')[0].textContent = --running
+              }
+            }
+            $('#year')[0].textContent = y++;
+            if (running > 0) return new Promise(r => setTimeout(r, 20)).then(loop);
+            else $('button')[0].disabled = false;
+          };
+      loop()
+    }
+  }
+});
+
+$.queries({
+  button: {
+    click () { app.emit('run', app.state().sampleSize) }
+  }
+})
+  </script>
+  <noscript><h6>Only viewable with JavaScript enabled.</h6></noscript>
+</body>
+</html>
